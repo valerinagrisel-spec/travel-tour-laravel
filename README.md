@@ -1,59 +1,276 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Travel Tour — Kelompok 7
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi berbasis web untuk pengelolaan layanan perjalanan wisata (*Travel Tour*) yang dikembangkan menggunakan Laravel dan MySQL sebagai bagian dari tugas praktikum Rekayasa Sistem Informasi.
 
-## About Laravel
+## 1. Teknologi yang Digunakan
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP dan Laravel
+- MySQL
+- Composer
+- HTML, CSS, JavaScript, dan Blade
+- XAMPP (untuk MySQL)
+- Ubuntu WSL atau terminal dengan PHP yang kompatibel
+- Git dan GitHub
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 2. Persiapan Sebelum Menjalankan Project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Pastikan perangkat sudah memiliki:
 
-## Learning Laravel
+1. PHP versi yang sesuai dengan `composer.json` (disarankan PHP 8.3 untuk lingkungan pengembangan kelompok).
+2. Composer.
+3. MySQL melalui XAMPP atau instalasi MySQL lainnya.
+4. Git.
+5. Node.js dan npm jika diperlukan untuk membangun aset frontend.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 3. Clone Repository
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Buka terminal, kemudian jalankan:
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/valerinagrisel-spec/travel-tour-laravel.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Masuk ke folder project:
 
-### Premium Partners
+```bash
+cd travel-tour-laravel
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Jika project diletakkan di folder XAMPP, lokasi yang dapat digunakan adalah:
 
-## Contributing
+```text
+C:\xampp\htdocs\travel-tour-laravel
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Untuk pengguna Ubuntu WSL:
 
-## Code of Conduct
+```bash
+cd /mnt/c/xampp/htdocs/travel-tour-laravel
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 4. Instalasi Dependency Laravel
 
-## Security Vulnerabilities
+Jalankan perintah:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+Perintah tersebut akan memasang seluruh dependency PHP yang diperlukan oleh aplikasi.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 5. Konfigurasi Environment
+
+Salin file `.env.example` menjadi `.env`:
+
+**Ubuntu WSL / Linux:**
+
+```bash
+cp .env.example .env
+```
+
+**Windows PowerShell:**
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Kemudian generate application key:
+
+```bash
+php artisan key:generate
+```
+
+## 6. Membuat Database MySQL
+
+1. Jalankan XAMPP.
+2. Aktifkan layanan MySQL.
+3. Buka `http://localhost/phpmyadmin`.
+4. Buat database baru dengan nama:
+
+```text
+travel_tour
+```
+
+Tidak perlu membuat tabel secara manual karena tabel akan dibuat menggunakan Laravel Migration.
+
+## 7. Konfigurasi Koneksi Database
+
+Buka file `.env`, kemudian sesuaikan konfigurasi berikut:
+
+```dotenv
+APP_NAME="Travel Tour"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=travel_tour
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+**Catatan:**
+
+- Pengaturan di atas merupakan contoh untuk MySQL XAMPP dengan konfigurasi lokal standar.
+- Jika MySQL menggunakan password atau port berbeda, sesuaikan nilainya.
+- Pengguna WSL perlu memastikan MySQL XAMPP dapat diakses dari WSL. Jika koneksi `127.0.0.1` gagal, periksa konfigurasi jaringan dan host MySQL.
+- Jangan mengunggah file `.env` ke GitHub.
+
+## 8. Menjalankan Migration
+
+Setelah database dibuat dan konfigurasi `.env` selesai, jalankan:
+
+```bash
+php artisan migrate
+```
+
+Perintah tersebut membuat tabel sesuai migration yang tersedia pada project.
+
+Jika terjadi kesalahan, periksa apakah MySQL sudah aktif dan konfigurasi database sudah sesuai.
+
+## 9. Menyiapkan Frontend
+
+Jika diperlukan oleh konfigurasi Vite pada project, jalankan:
+
+```bash
+npm install
+npm run build
+```
+
+Perintah tersebut digunakan untuk memasang dependency frontend dan membangun aset CSS/JavaScript.
+
+## 10. Menyiapkan Storage
+
+Jalankan:
+
+```bash
+php artisan storage:link
+```
+
+Perintah ini membuat tautan storage publik untuk file yang disimpan melalui Laravel, apabila fitur terkait menggunakannya.
+
+## 11. Menjalankan Aplikasi
+
+Bersihkan cache konfigurasi terlebih dahulu:
+
+```bash
+php artisan optimize:clear
+```
+
+Kemudian jalankan server Laravel:
+
+```bash
+php artisan serve
+```
+
+Buka browser dan akses:
+
+```text
+http://127.0.0.1:8000
+```
+
+Pastikan terminal server tetap aktif selama aplikasi digunakan.
+
+## 12. Fitur dan Role Pengguna
+
+Aplikasi Travel Tour memiliki beberapa role pengguna:
+
+| Role | Fitur Utama |
+|---|---|
+| Admin | Mengelola paket wisata, driver, kendaraan, dan penugasan perjalanan |
+| Staff | Memverifikasi pembayaran dan pemesanan, memeriksa pelanggan, serta mengelola laporan transaksi |
+| Customer | Melihat paket wisata, melakukan pemesanan, mengunggah bukti pembayaran, dan memeriksa status pesanan |
+| Driver | Melihat jadwal tour dan detail penugasan |
+| Manager | Meninjau laporan transaksi serta mengekspor laporan |
+
+Akses masing-masing halaman mengikuti role akun yang digunakan.
+
+Untuk pengujian awal, buat akun melalui halaman registrasi apabila fitur tersebut tersedia. Akun dengan role khusus seperti Admin, Staff, Driver, dan Manager perlu disiapkan sesuai mekanisme pengelolaan pengguna pada project.
+
+## 13. Melakukan Update Project
+
+Apabila terdapat perubahan kode terbaru di GitHub, masuk ke folder project lalu jalankan:
+
+```bash
+git pull origin main
+```
+
+Jika terdapat perubahan dependency atau migration, jalankan kembali perintah yang relevan:
+
+```bash
+composer install
+php artisan migrate
+php artisan optimize:clear
+```
+
+Jika terdapat perubahan frontend, jalankan kembali:
+
+```bash
+npm install
+npm run build
+```
+
+Sebelum melakukan `git pull`, pastikan perubahan lokal sudah disimpan atau di-commit agar tidak terjadi konflik.
+
+## 14. Troubleshooting
+
+**A. Error koneksi database**
+
+Periksa layanan MySQL, nama database, username, password, port, dan host yang digunakan.
+
+**B. Error `No application encryption key has been specified`**
+
+Jalankan:
+
+```bash
+php artisan key:generate
+```
+
+**C. Error `Class not found` atau masalah dependency**
+
+Jalankan:
+
+```bash
+composer install
+composer dump-autoload
+```
+
+**D. Perubahan route atau tampilan tidak muncul**
+
+Jalankan:
+
+```bash
+php artisan optimize:clear
+```
+
+**E. Menampilkan daftar route aplikasi**
+
+Jalankan:
+
+```bash
+php artisan route:list
+```
+
+**F. Gambar dari storage tidak muncul**
+
+Pastikan file tersedia dan jalankan:
+
+```bash
+php artisan storage:link
+```
+
+## 15. Catatan Pengembangan
+
+- Gunakan database lokal masing-masing.
+- File `.env` tidak boleh diunggah ke GitHub.
+- Jangan memasukkan password, token, atau data pribadi pengguna ke repository.
+- Perubahan fitur sebaiknya mengikuti Use Case Diagram, Activity Diagram, Sequence Diagram, Class Diagram, dan Physical Data Model pada dokumen praktikum kelompok.
+- Sebelum melakukan perubahan pada fitur utama, koordinasikan dengan anggota kelompok untuk menghindari konflik kode.
+
+---
+
+**Kelompok 7 — Travel Tour**
+
+Repository: https://github.com/valerinagrisel-spec/travel-tour-laravel
