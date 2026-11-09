@@ -1,0 +1,591 @@
+:root {
+    --tt-navy: #252944;
+    --tt-lime: #E3FF3B;
+    --tt-blue: #3285EB;
+    --tt-blue-deep: #2460A9;
+    --tt-red: #FF0000;
+    --tt-care: #E37070;
+    --tt-active: #5FD76D;
+    --tt-used: #FFB703
+}
+
+.tt-shell {
+    display: flex;
+    min-height: 100vh;
+    background: #fff;
+    color: var(--tt-navy);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px
+}
+
+.tt-shell * {
+    box-sizing: border-box
+}
+
+.tt-shell button,
+.tt-shell input,
+.tt-shell select,
+.tt-shell textarea {
+    font: inherit
+}
+
+.tt-shell a {
+    text-decoration: none
+}
+
+.tt-sidebar {
+    width: 230px;
+    flex: none;
+    background: linear-gradient(155deg, #3285EB, #2460A9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 16px;
+    min-height: 100vh
+}
+
+.tt-logo {
+    font-size: 23px;
+    line-height: 1.13;
+    color: var(--tt-lime);
+    font-weight: 800;
+    margin-bottom: 64px;
+    padding: 0 12px
+}
+
+.tt-logo span {
+    font-size: 14px;
+    padding-left: 5px
+}
+
+.tt-nav {
+    display: grid;
+    gap: 8px
+}
+
+.tt-nav a,
+.tt-nav-disabled {
+    color: var(--tt-lime);
+    display: block;
+    border-radius: 8px;
+    padding: 12px 10px;
+    font-size: 11px;
+    font-weight: 600
+}
+
+.tt-nav .selected {
+    background: var(--tt-lime);
+    color: var(--tt-navy)
+}
+
+.tt-nav-disabled {
+    opacity: .6
+}
+
+.tt-nav-disabled small {
+    font-size: 8px
+}
+
+.tt-bottom {
+    margin-top: auto;
+    border-top: 1px solid #ffffff55;
+    padding: 20px 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: var(--tt-lime)
+}
+
+.tt-bottom button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: var(--tt-lime);
+    font-weight: 700
+}
+
+.tt-main {
+    width: 100%;
+    min-width: 0;
+    max-width: 1500px;
+    padding: 40px 38px
+}
+
+.tt-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 28px
+}
+
+.tt-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap
+}
+
+.tt-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.tt-tabs a {
+    padding: 12px 16px;
+    border-radius: 9px;
+    color: var(--tt-navy);
+    font-weight: 700
+}
+
+.tt-tabs a.active {
+    background: var(--tt-blue);
+    color: #fff
+}
+
+.tt-btn,
+.tt-edit {
+    border: 0;
+    background: var(--tt-blue);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #fff !important;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center
+}
+
+.tt-filter {
+    display: flex;
+    gap: 10px;
+    max-width: 850px;
+    margin-bottom: 18px
+}
+
+.tt-filter input {
+    flex: 1;
+    min-width: 0
+}
+
+.tt-filter input,
+.tt-filter select {
+    border: none;
+    border-radius: 8px;
+    background: #E6E6EA;
+    padding: 12px 14px;
+    color: var(--tt-navy)
+}
+
+.tt-filter select {
+    width: 180px
+}
+
+.tt-reset {
+    align-self: center;
+    font-weight: 700;
+    color: var(--tt-blue)
+}
+
+.tt-table-wrap {
+    overflow-x: auto
+}
+
+.tt-table {
+    width: 100%;
+    border-spacing: 0 8px;
+    white-space: nowrap;
+    text-align: left
+}
+
+.tt-table th {
+    padding: 8px 10px;
+    font-size: 10px
+}
+
+.tt-table td {
+    padding: 9px 10px;
+    background: var(--tt-lime);
+    font-size: 10px;
+    font-weight: 600
+}
+
+.tt-table td:first-child {
+    border-radius: 8px 0 0 8px
+}
+
+.tt-table td:last-child {
+    border-radius: 0 8px 8px 0
+}
+
+.tt-table td:nth-child(5) {
+    white-space: normal;
+    max-width: 190px
+}
+
+.tt-thumb {
+    height: 48px;
+    width: 62px;
+    object-fit: cover;
+    border-radius: 7px
+}
+
+.tt-placeholder {
+    background: var(--tt-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px
+}
+
+.tt-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center
+}
+
+.tt-actions form {
+    margin: 0
+}
+
+.tt-edit,
+.tt-delete {
+    padding: 9px 10px;
+    font-size: 9px
+}
+
+.tt-delete {
+    border: 0;
+    color: white;
+    background: var(--tt-red);
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 700
+}
+
+.tt-status {
+    border-radius: 6px;
+    padding: 6px 8px;
+    display: inline-block;
+    color: #1e2538;
+    font-size: 9px
+}
+
+.s-aktif,
+.s-tersedia {
+    background: var(--tt-active)
+}
+
+.s-tidak_aktif {
+    background: var(--tt-care)
+}
+
+.s-perawatan {
+    background: var(--tt-care)
+}
+
+.s-digunakan {
+    background: var(--tt-used)
+}
+
+.tt-empty {
+    text-align: center;
+    padding: 35px !important
+}
+
+.tt-pagination {
+    margin-top: 24px;
+    font-size: 12px
+}
+
+.tt-notice {
+    padding: 15px 18px;
+    border-radius: 9px;
+    background: #e8f9eb;
+    color: #18562c;
+    margin-bottom: 20px
+}
+
+.tt-error {
+    padding: 15px 18px;
+    border-radius: 9px;
+    background: #ffe6e6;
+    color: #862525;
+    margin-bottom: 20px
+}
+
+.tt-error ul {
+    margin: 8px 0 0;
+    padding-left: 20px
+}
+
+.tt-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 25px;
+    max-width: 1000px
+}
+
+.tt-fields {
+    min-width: 0
+}
+
+.tt-fields label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 650;
+    gap: 8px;
+    margin-bottom: 16px
+}
+
+.tt-fields input,
+.tt-fields textarea,
+.tt-fields select {
+    padding: 13px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #e7e7e9;
+    color: var(--tt-navy);
+    min-width: 0
+}
+
+.tt-fields textarea {
+    resize: vertical
+}
+
+.tt-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px
+}
+
+.tt-upload {
+    background: var(--tt-blue);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-radius: 10px;
+    align-self: start;
+    color: #fff;
+    text-align: center
+}
+
+.tt-upload img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 8px
+}
+
+.tt-upload input {
+    font-size: 9px;
+    max-width: 100%
+}
+
+.tt-upload small {
+    font-size: 9px;
+    line-height: 1.5
+}
+
+.tt-form-buttons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px
+}
+
+.tt-cancel {
+    padding: 10px 14px;
+    border: 1px solid var(--tt-navy);
+    border-radius: 8px;
+    color: var(--tt-navy);
+    font-weight: 700
+}
+
+.tt-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 18px
+}
+
+.tt-stat {
+    background: linear-gradient(125deg, #3285EB, #2460A9);
+    border-radius: 15px;
+    text-align: center;
+    padding: 22px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--tt-lime)
+}
+
+.tt-stat strong {
+    font-size: 32px
+}
+
+.tt-stat span {
+    font-size: 10px;
+    color: #fff
+}
+
+.tt-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px
+}
+
+.tt-panel {
+    background: linear-gradient(135deg, #3285EB, #2460A9);
+    padding: 22px;
+    color: #fff;
+    border-radius: 15px;
+    min-height: 205px
+}
+
+.tt-panel h2 {
+    font-size: 14px;
+    margin: 0 0 15px;
+    color: white
+}
+
+.tt-panel p {
+    line-height: 1.8
+}
+
+.tt-pie {
+    border: 17px solid var(--tt-lime);
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    background: #fff;
+    color: var(--tt-navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto 12px
+}
+
+.tt-pie b {
+    font-size: 25px
+}
+
+.tt-pie small {
+    font-size: 8px
+}
+
+.tt-legend {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 8px
+}
+
+.tt-meter-label {
+    display: flex;
+    justify-content: space-between;
+    color: var(--tt-lime);
+    margin: 12px 0 6px;
+    font-size: 10px
+}
+
+.tt-meter {
+    background: #1d4f91;
+    border-radius: 10px;
+    height: 15px;
+    overflow: hidden
+}
+
+.tt-meter i {
+    display: block;
+    background: var(--tt-lime);
+    height: 100%;
+    border-radius: 10px
+}
+
+.tt-kv {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff55;
+    padding: 9px 0;
+    font-size: 10px
+}
+
+.tt-kv span {
+    color: var(--tt-lime)
+}
+
+@media(max-width:900px) {
+    .tt-sidebar {
+        width: 170px
+    }
+
+    .tt-main {
+        padding: 25px
+    }
+
+    .tt-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .tt-form {
+        grid-template-columns: 1fr
+    }
+
+    .tt-upload {
+        max-width: 330px
+    }
+}
+
+@media(max-width:650px) {
+    .tt-shell {
+        display: block
+    }
+
+    .tt-sidebar {
+        width: 100%;
+        min-height: 0;
+        padding: 15px
+    }
+
+    .tt-logo {
+        margin: 0 0 12px
+    }
+
+    .tt-bottom {
+        display: none
+    }
+
+    .tt-nav {
+        display: flex;
+        flex-wrap: wrap
+    }
+
+    .tt-main {
+        padding: 18px
+    }
+
+    .tt-grid2 {
+        grid-template-columns: 1fr
+    }
+
+    .tt-filter {
+        flex-wrap: wrap
+    }
+
+    .tt-filter input {
+        flex-basis: 100%
+    }
+
+    .tt-inline {
+        grid-template-columns: 1fr
+    }
+}

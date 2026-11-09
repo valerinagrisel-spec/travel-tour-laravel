@@ -1,0 +1,174 @@
+.lap-header {
+    margin: 0 0 26px
+}
+
+.lap-eyebrow {
+    color: #3285EB;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px
+}
+
+.lap-header h1 {
+    font-size: 24px;
+    margin: 11px 0;
+    color: #252944
+}
+
+.lap-header p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #667085
+}
+
+.lap-filter {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #f2f5fa;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 24px
+}
+
+.lap-filter label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700
+}
+
+.lap-filter input {
+    border: 1px solid #dde2ea;
+    border-radius: 8px;
+    background: #fff;
+    padding: 11px;
+    color: #252944;
+    font: inherit
+}
+
+.lap-primary {
+    background: linear-gradient(120deg, #3285EB, #2460A9);
+    color: white !important;
+    border: 0;
+    border-radius: 9px;
+    display: inline-block;
+    text-decoration: none;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 12px 16px;
+    font-size: 10px
+}
+
+.lap-statgrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 25px
+}
+
+.lap-stat {
+    background: linear-gradient(130deg, #3285EB, #2460A9);
+    border-radius: 14px;
+    padding: 24px;
+    color: #E3FF3B
+}
+
+.lap-stat small {
+    display: block;
+    color: white;
+    font-size: 10px;
+    margin-bottom: 15px
+}
+
+.lap-stat strong {
+    font-size: 23px
+}
+
+.lap-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 25px 0 10px
+}
+
+.lap-toolbar h2,
+.lap-sent h2 {
+    font-size: 15px
+}
+
+.lap-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+.lap-tablewrap {
+    overflow-x: auto
+}
+
+.lap-table {
+    width: 100%;
+    border-spacing: 0 8px;
+    white-space: nowrap;
+    text-align: left
+}
+
+.lap-table th {
+    font-size: 9px;
+    padding: 8px 10px
+}
+
+.lap-table td {
+    font-size: 9px;
+    padding: 14px 10px;
+    background: #E3FF3B
+}
+
+.lap-table td:first-child {
+    border-radius: 8px 0 0 8px
+}
+
+.lap-table td:last-child {
+    border-radius: 0 8px 8px 0
+}
+
+.lap-status {
+    background: #5FD76D;
+    border-radius: 6px;
+    padding: 6px 8px;
+    display: inline-block
+}
+
+.lap-empty {
+    text-align: center;
+    padding: 35px !important
+}
+
+.lap-sent {
+    margin-top: 40px
+}
+
+.lap-sent a {
+    font-weight: 800;
+    color: #2460A9
+}
+
+@media(max-width:700px) {
+    .lap-statgrid {
+        grid-template-columns: 1fr
+    }
+
+    .lap-filter label {
+        width: 100%
+    }
+
+    .lap-filter input {
+        width: 100%
+    }
+}

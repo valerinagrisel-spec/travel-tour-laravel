@@ -1,0 +1,96 @@
+.pj-help {
+    font-size: 10px;
+    line-height: 1.8;
+    margin: -10px 0 18px;
+    color: #52586e
+}
+
+.pj-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 18px
+}
+
+.pj-panel {
+    padding: 22px;
+    border-radius: 14px;
+    background: #f5f6f9;
+    min-width: 0;
+    margin-bottom: 18px
+}
+
+.pj-panel h2 {
+    font-size: 14px;
+    margin: 0 0 18px
+}
+
+.pj-panel .pj-help {
+    margin: 5px 0 16px
+}
+
+.pj-form {
+    display: grid;
+    gap: 14px
+}
+
+.pj-form label {
+    display: grid;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700
+}
+
+.pj-form input,
+.pj-form select,
+.pj-form textarea {
+    background: #e3e5e9;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    color: #252944;
+    min-width: 0
+}
+
+.pj-form .tt-btn {
+    justify-self: end
+}
+
+.pj-list {
+    background: white;
+    padding: 0
+}
+
+.pj-detail {
+    max-width: 740px
+}
+
+.pj-detail div {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 15px;
+    padding: 13px 4px;
+    border-bottom: 1px solid #d9dce4;
+    font-size: 11px
+}
+
+.pj-detail strong {
+    color: #2460A9
+}
+
+.pj-detail span {
+    line-height: 1.7
+}
+
+@media(max-width:850px) {
+    .pj-columns {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:480px) {
+    .pj-detail div {
+        grid-template-columns: 1fr;
+        gap: 4px
+    }
+}
