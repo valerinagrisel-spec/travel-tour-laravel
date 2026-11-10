@@ -23,8 +23,8 @@ class PenugasanController extends Controller {
  public function store(Request $request){
   $data=$request->validate([
    'pemesanan_id'=>['required','integer','exists:pemesanan,id'],
-   'driver_id'=>['required','integer','exists:driver,id'],
-   'kendaraan_id'=>['required','integer','exists:kendaraan,id'],
+   'driver_id'=>['required','string','exists:driver,id_driver'],
+   'kendaraan_id'=>['required','string','exists:kendaraan,id_kendaraan'],
    'titik_kumpul'=>['required','string','max:160'],
    'jam_kumpul'=>['required','date_format:H:i'],
    'catatan'=>['nullable','string','max:2000'],
@@ -44,10 +44,10 @@ class PenugasanController extends Controller {
    $end=$start->copy()->addDays(max(1,(int)$pesanan->paket->durasi_hari)-1);
    if($start->isBefore(now()->startOfDay()))throw ValidationException::withMessages(['pemesanan_id'=>'Tanggal keberangkatan sudah lewat.']);
    $bentrok=Penugasan::where('status','terjadwal')->whereDate('tanggal_mulai','<=',$end->toDateString())->whereDate('tanggal_selesai','>=',$start->toDateString())
-    ->where(fn($q)=>$q->where('driver_id',$driver->id)->orWhere('kendaraan_id',$kendaraan->id))->exists();
+    ->where(fn($q)=>$q->where('driver_id',$driver->getKey())->orWhere('kendaraan_id',$kendaraan->getKey()))->exists();
    if($bentrok)throw ValidationException::withMessages(['driver_id'=>'Driver atau kendaraan sudah ditugaskan pada rentang tanggal tersebut.']);
    Penugasan::create([
-    'pemesanan_id'=>$pesanan->id,'driver_id'=>$driver->id,'kendaraan_id'=>$kendaraan->id,
+    'pemesanan_id'=>$pesanan->id,'driver_id'=>$driver->getKey(),'kendaraan_id'=>$kendaraan->getKey(),
     'tanggal_mulai'=>$start->toDateString(),'tanggal_selesai'=>$end->toDateString(),
     'titik_kumpul'=>$data['titik_kumpul'],'jam_kumpul'=>$data['jam_kumpul'],
     'catatan'=>$data['catatan']??null,'status'=>'terjadwal'
@@ -56,12 +56,12 @@ class PenugasanController extends Controller {
   return redirect()->route('admin.penugasan.index')->with('success','Penugasan berhasil disimpan.');
  }
  public function hubungkanDriver(Request $request){
-  $data=$request->validate(['driver_id'=>['required','exists:driver,id'],'user_id'=>['required','exists:users,id']]);
+  $data=$request->validate(['driver_id'=>['required','exists:driver,id_driver'],'user_id'=>['required','exists:users,id']]);
   DB::transaction(function()use($data){
    $driver=Driver::whereKey($data['driver_id'])->lockForUpdate()->firstOrFail();
    $user=User::whereKey($data['user_id'])->firstOrFail();
    if($user->role!=='driver')throw ValidationException::withMessages(['user_id'=>'Akun harus mempunyai role driver.']);
-   if(Driver::where('user_id',$user->id)->whereKeyNot($driver->id)->exists())throw ValidationException::withMessages(['user_id'=>'Akun sudah terhubung ke driver lain.']);
+   if(Driver::where('user_id',$user->id)->whereKeyNot($driver->getKey())->exists())throw ValidationException::withMessages(['user_id'=>'Akun sudah terhubung ke driver lain.']);
    $driver->user_id=$user->id;$driver->save();
   });
   return back()->with('success','Akun login driver berhasil dihubungkan.');

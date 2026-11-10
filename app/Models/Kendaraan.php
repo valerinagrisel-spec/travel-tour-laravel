@@ -5,5 +5,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Kendaraan extends Model {
     use SoftDeletes;
     protected $table = 'kendaraan';
-    protected $fillable = ['plat_nomor','jenis','merek','kapasitas','tahun_produksi','status','foto'];
+    protected $primaryKey = 'id_kendaraan';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected static function booted(): void {
+        static::creating(function ($item) {
+            if (!$item->getKey()) {
+                $item->id_kendaraan = 'KDR-' . (string) \Illuminate\Support\Str::uuid();
+            }
+        });
+    }
+    protected $fillable = ['plat_nomor','jenis_kendaraan','merek','kapasitas','tahun_produksi','status','foto'];
 }

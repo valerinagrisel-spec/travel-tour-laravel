@@ -6,6 +6,6 @@ class Penugasan extends Model {
  protected $fillable=['pemesanan_id','driver_id','kendaraan_id','tanggal_mulai','tanggal_selesai','titik_kumpul','jam_kumpul','catatan','status'];
  protected $casts=['tanggal_mulai'=>'date','tanggal_selesai'=>'date'];
  public function pemesanan(){return $this->belongsTo(Pemesanan::class);}
- public function driver(){return $this->belongsTo(Driver::class);}
- public function kendaraan(){return $this->belongsTo(Kendaraan::class);}
+ public function driver(){return $this->belongsTo(Driver::class, 'driver_id', 'id_driver');}
+ public function kendaraan(){return $this->belongsTo(Kendaraan::class, 'kendaraan_id', 'id_kendaraan');}
 }

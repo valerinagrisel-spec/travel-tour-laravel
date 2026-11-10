@@ -1,3 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Travel Tour')</title>
+
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- CSS halaman Travel Tour -->
+    <link rel="stylesheet" href="{{ asset('css/travel-flow.css') }}">
+
+    <!-- CSS halaman Admin -->
+    <link rel="stylesheet" href="{{ asset('css/travel-admin.css') }}">
+
+    <!-- CSS halaman Penugasan -->
+    <link rel="stylesheet" href="{{ asset('css/travel-penugasan.css') }}">
+
+    <!-- CSS halaman Laporan -->
+    <link rel="stylesheet" href="{{ asset('css/travel-laporan.css') }}">
+
+    @stack('styles')
+</head>
+
+
 <body>
 
     @yield('content')

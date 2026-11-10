@@ -12,12 +12,12 @@ class JadwalTourController extends Controller {
  }
  public function index(){
   $driver=$this->akunDriver();
-  $jadwals=Penugasan::with(['pemesanan.paket','kendaraan'])->where('driver_id',$driver->id)->orderBy('tanggal_mulai')->paginate(12);
+  $jadwals=Penugasan::with(['pemesanan.paket','kendaraan'])->where('driver_id',$driver->getKey())->orderBy('tanggal_mulai')->paginate(12);
   return view('driver.jadwal.index',compact('driver','jadwals'));
  }
  public function show(Penugasan $penugasan){
   $driver=$this->akunDriver();
-  abort_unless($penugasan->driver_id===$driver->id,403);
+  abort_unless($penugasan->driver_id===$driver->getKey(),403);
   $penugasan->load(['pemesanan.paket','kendaraan']);
   return view('driver.jadwal.show',compact('penugasan','driver'));
  }

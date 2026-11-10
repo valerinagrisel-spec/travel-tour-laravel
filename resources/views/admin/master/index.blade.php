@@ -18,9 +18,9 @@
  @forelse($data as $item)<tr>
  <td>@if($item->foto)<img class="tt-thumb" src="{{ asset('storage/'.$item->foto) }}" alt="Foto">@else<div class="tt-thumb tt-placeholder">📷</div>@endif</td>
  @if($jenis==='paket')<td>{{ $item->nama_paket }}</td><td>{{ $item->tujuan }}</td><td>Rp {{ number_format($item->harga,0,',','.') }}</td><td>{{ $item->kuota }}</td>
- @elseif($jenis==='driver')<td>{{ $item->nama }}</td><td>{{ $item->nomor_telepon }}</td><td>{{ $item->nomor_sim }}</td><td>{{ $item->alamat }}</td><td><span class="tt-status s-{{ $item->status }}">{{ str_replace('_',' ',ucwords($item->status,'_')) }}</span></td>
- @else<td>{{ $item->plat_nomor }}</td><td>{{ $item->jenis }}</td><td>{{ $item->merek }}</td><td>{{ $item->kapasitas }}</td><td>{{ $item->tahun_produksi }}</td><td><span class="tt-status s-{{ $item->status }}">{{ str_replace('_',' ',ucwords($item->status,'_')) }}</span></td>@endif
- <td><div class="tt-actions"><a href="{{ route('admin.'.$jenis.'.edit',$item->id) }}" class="tt-edit">Edit</a><form method="POST" action="{{ route('admin.'.$jenis.'.destroy',$item->id) }}" onsubmit="return confirm('Yakin menghapus data ini?')">@csrf @method('DELETE')<button type="submit" class="tt-delete">Hapus</button></form></div></td>
+ @elseif($jenis==='driver')<td>{{ $item->nama_lengkap }}</td><td>{{ $item->nomor_telepon }}</td><td>{{ $item->nomor_sim }}</td><td>{{ $item->alamat }}</td><td><span class="tt-status s-{{ $item->status }}">{{ str_replace('_',' ',ucwords($item->status,'_')) }}</span></td>
+ @else<td>{{ $item->plat_nomor }}</td><td>{{ $item->jenis_kendaraan }}</td><td>{{ $item->merek }}</td><td>{{ $item->kapasitas }}</td><td>{{ $item->tahun_produksi }}</td><td><span class="tt-status s-{{ $item->status }}">{{ str_replace('_',' ',ucwords($item->status,'_')) }}</span></td>@endif
+ <td><div class="tt-actions"><a href="{{ route('admin.'.$jenis.'.edit',$item->getKey()) }}" class="tt-edit">Edit</a><form method="POST" action="{{ route('admin.'.$jenis.'.destroy',$item->getKey()) }}" onsubmit="return confirm('Yakin menghapus data ini?')">@csrf @method('DELETE')<button type="submit" class="tt-delete">Hapus</button></form></div></td>
  </tr>@empty<tr><td colspan="9" class="tt-empty">Belum ada data. Klik tombol Tambah untuk mengisi.</td></tr>@endforelse
  </tbody></table></div><div class="tt-pagination">{{ $data->links() }}</div>
 @endsection
